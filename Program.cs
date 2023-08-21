@@ -10,3 +10,4 @@ BlogActions blog = new BlogActions();
 blog.addBlog();
 blog.getBlogs();
 
+
