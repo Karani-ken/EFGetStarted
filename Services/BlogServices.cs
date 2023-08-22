@@ -24,9 +24,15 @@ namespace EFGetStarted.Services
            
         }
 
-        public Task DeleteBlogAsync(int id)
+        public async Task DeleteBlogAsync(int id)
         {
-            throw new NotImplementedException();
+            var BlogToDelete = await db.Blogs.FindAsync(id);
+            if (BlogToDelete != null)
+            {
+                 db.Blogs.Remove(BlogToDelete);
+                await db.SaveChangesAsync();
+            }
+           
         }
 
         public async Task<List<Blog>> GetAllBlogAsync()
@@ -36,9 +42,18 @@ namespace EFGetStarted.Services
           
         }
 
-        public Task<InfoMessage> UpdateBlogAsync(Blog blog)
+        public async Task<InfoMessage> UpdateBlogAsync(string name, int id)
         {
-            throw new NotImplementedException();
+            var BlogToUpdate = await db.Blogs.FindAsync(id);
+            if (BlogToUpdate != null)
+            {
+                BlogToUpdate.BlogName = name;
+
+                await db.SaveChangesAsync();
+                return new InfoMessage { Message = "Updated successfully" };
+            }
+            throw new Exception("Could not Update");
+           
         }
     }
 }

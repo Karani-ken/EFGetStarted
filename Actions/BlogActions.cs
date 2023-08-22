@@ -1,5 +1,6 @@
 ﻿using EFGetStarted.Database;
 using EFGetStarted.Models;
+using EFGetStarted.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace EFGetStarted.Actions
     public class BlogActions
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
+        BlogServices services = new BlogServices();
 
         public void addBlog()
         {
@@ -30,6 +31,15 @@ namespace EFGetStarted.Actions
             {
                 Console.WriteLine($"BlogId:{blog.BlogId}\t BlogName:{blog.BlogName}");
             }
+        }
+        public async void updateBlog()
+        {
+            Console.WriteLine("Enter Id of the blog to delete");
+            int Id = Convert.ToInt32(Console.ReadLine());
+            await Console.Out.WriteLineAsync("Blog name:");
+            var name = Console.ReadLine();
+            
+            await services.UpdateBlogAsync(name, Id);
         }
     }
 }

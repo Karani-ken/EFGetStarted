@@ -7,7 +7,8 @@ using System.Linq;
 
 ApplicationDbContext applicationDbContext = new ApplicationDbContext();
 BlogActions blog = new BlogActions();
-blog.addBlog();
+
 blog.getBlogs();
+blog.updateBlog();
 
 

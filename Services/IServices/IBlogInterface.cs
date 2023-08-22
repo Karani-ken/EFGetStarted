@@ -9,7 +9,7 @@ namespace EFGetStarted.Services.IServices
         Task<InfoMessage> CreateBlogAsync(Blog blog);
 
         //Update a blog
-        Task<InfoMessage> UpdateBlogAsync(Blog blog);
+        Task<InfoMessage> UpdateBlogAsync(string name, int id);
         //delete a blog
         Task DeleteBlogAsync(int id);
         //get all blogs
